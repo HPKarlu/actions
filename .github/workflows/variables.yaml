@@ -3,12 +3,12 @@ on:
  workflow_dispatch:
 
 jobs:
- Generate and set variables:
+ Generate_and_set_variables:
   runs-on: ubuntu-latest
- steps:
-   - name: Set Color
-     id: color-generator
-     run: echo "SELECTED_COLOR=saffron" >> $GITHUB_OUTPUT
+  steps:
+    - name: Set Color
+      id: color-generator
+      run: echo "SELECTED_COLOR=saffron" >> $GITHUB_OUTPUT
 
-   - name: Get Color 
-     run: echo "${{ steps.color-generator.outputs.SELECTED_COLOR}}"
+    - name: Get Color 
+      run: echo "${{ steps.color-generator.outputs.SELECTED_COLOR}}"  
