@@ -11,4 +11,18 @@ jobs:
       run: echo "SELECTED_COLOR=saffron" >> $GITHUB_OUTPUT
 
     - name: Get Color 
-      run: echo "${{ steps.color-generator.outputs.SELECTED_COLOR}}"  
+      run: echo "${{ steps.color-generator.outputs.SELECTED_COLOR}}" 
+
+ Generate_a_secret_output:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Generate ,mask , and output a secret
+      id: sets-a-secret
+      run: |
+        the_secret = $(( RANDOM ))
+        echo "::add-mask::$the_secret"
+        echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
+
+    - name: Use the secret output (protected by a mask)
+      run: |
+       echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}" 
