@@ -1,0 +1,14 @@
+name: Variables- Environment and Secret
+on:
+ workflow_dispatch:
+
+jobs:
+ Generate and set variables:
+  runs-on: ubuntu-latest
+ steps:
+   - name: Set Color
+     id: color-generator
+     run: echo "SELECTED_COLOR=saffron" >> $GITHUB_OUTPUT
+
+   - name: Get Color 
+     run: echo "${{ steps.color-generator.outputs.SELECTED_COLOR}}"
