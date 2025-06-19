@@ -26,4 +26,13 @@ jobs:
 
     - name: Use the secret output (protected by a mask)
       run: |
-       echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}" 
+       echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
+
+    - name: Set the environment variable value
+      id: set_env
+      run: |
+        echo "action_state=saffron" >> "$GITHUB_ENV"
+
+    - name: Reads the environment variable value
+      run: |
+        echo "${{ env.action_state}}"  
